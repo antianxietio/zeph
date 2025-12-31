@@ -5,11 +5,15 @@ import dynamic from "next/dynamic";
 import Navbar from "./components/navbar";
 import HackathonHero from "./components/Hero";
 import HackathonTracks from "./components/Tracks";
+<<<<<<< HEAD
+import Counter from "./components/counter";
+=======
 import Timeline from "./components/Timeline";
 import HackathonCountdown from "./components/counter";
 import PartnerInstitutions from "./components/partner";
 import LocationDetails from "./components/location";
 import Footer from "./components/footer";
+>>>>>>> a18dbaa6dbb266d3f84defc4483f7253cd354861
 
 // IMPORTANT: client-only Galaxy
 const Galaxy = dynamic(() => import("./components/galaxy"), {
@@ -57,15 +61,7 @@ export default function Home() {
       <section className="relative h-screen overflow-hidden">
         {/* 🌌 Galaxy background */}
         <div className="absolute inset-0 z-0">
-          <Galaxy
-            transparent={false}
-            twinkleIntensity={0.3}
-            rotationSpeed={0.05}
-            starSpeed={0.1}
-            speed={0.1}
-            mouseInteraction={false}
-            mouseRepulsion={false}
-          />
+          <Galaxy />
         </div>
 
         {/* 🌕 Moon */}
@@ -106,7 +102,7 @@ export default function Home() {
             
             {/* Main text */}
             <h1 
-              className={`relative text-[12rem] font-black bg-gradient-to-b from-white via-white to-white/90 bg-clip-text text-transparent transition-opacity duration-1000 ${
+              className={`relative text-[12rem] font-black bg-linear-to-b from-white via-white to-white/90 bg-clip-text text-transparent transition-opacity duration-1000 ${
                 mounted ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
@@ -138,7 +134,12 @@ export default function Home() {
 
       <HackathonHero/>
 
+      
+
       <HackathonTracks/>
+<<<<<<< HEAD
+      <Counter />
+=======
 
       <Timeline/>
 
@@ -152,6 +153,7 @@ export default function Home() {
 
       
     
+>>>>>>> a18dbaa6dbb266d3f84defc4483f7253cd354861
     </main>
   );
 }
