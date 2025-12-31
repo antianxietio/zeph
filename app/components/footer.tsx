@@ -33,13 +33,12 @@ export default function Footer() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
         style={{
-          backgroundImage: "url('/images/underwater-bg.jpg')",
+          backgroundImage: "url('https://wallpapershome.com/images/wallpapers/underwater-wallpaper-3840x2160-cetacean-aquatic-18612.jpg')",
           filter: "brightness(0.85) contrast(1.15) saturate(1.2)",
         }}
       />
 
       {/* Strong Contrast Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-900/85 to-slate-950/95" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-14">

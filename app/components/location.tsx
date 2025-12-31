@@ -1,31 +1,10 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
-import {
-  MapPin,
-  Calendar,
-  Users,
-  Wifi,
-  Coffee,
-  UserCheck,
-  Trophy,
-  Mail,
-  Phone,
-  Navigation,
-  Award,
-} from "lucide-react";
+import { MapPin, Calendar, Users, Navigation } from "lucide-react";
 
 const images = [
-  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-  "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80",
-  "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80",
-];
-
-const facilities = [
-  { icon: Wifi, label: "High-Speed WiFi", color: "from-blue-500/80 to-blue-700/80" },
-  { icon: Coffee, label: "Food & Drinks", color: "from-amber-500/80 to-orange-600/80" },
-  { icon: UserCheck, label: "Mentorship", color: "from-purple-500/80 to-purple-700/80" },
-  { icon: Trophy, label: "Prizes", color: "from-indigo-500/80 to-blue-700/80" },
+  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+  "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&q=80",
+  "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200&q=80",
 ];
 
 export default function LocationDetails() {
@@ -34,171 +13,180 @@ export default function LocationDetails() {
   useEffect(() => {
     const interval = setInterval(
       () => setCurrentImage((p) => (p + 1) % images.length),
-      2600
+      3500
     );
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white px-6 py-10">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative min-h-screen bg-transparent py-32 overflow-hidden" id="venue">
+      {/* Background */}
+<div className="absolute inset-0 pointer-events-none">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage:
+        "url('https://images.unsplash.com/photo-1514454529242-9e4677563e7b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c2t5JTIwd2FsbHBhcGVyfGVufDB8fDB8fHww')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      filter: "brightness(0.85) contrast(1.05) saturate(1.1)",
+    }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+</div>
+
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-            Location & Details
-          </h1>
-          <p className="text-slate-400 text-sm mt-2">
-            Venue, facilities, and essentials at a glance
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6">
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+            <span className="text-xs text-white/60 font-semibold tracking-widest uppercase">Venue</span>
+          </div>
+          
+          <h2 className="text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight">
+            Location & Event
+          </h2>
+          
+          <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+            Where innovation meets infrastructure at SRM Institute
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* LEFT – GLASS IMAGE CAROUSEL */}
-          <div className="relative h-[560px] rounded-3xl overflow-hidden border border-white/20 backdrop-blur-xl bg-white/5 shadow-2xl shadow-teal-900/40 sticky top-6">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          {/* Image Carousel - Takes 3 columns */}
+          <div className="lg:col-span-3 relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden group border border-white/10">
+            {/* Image Stack */}
             {images.map((img, index) => (
-              <img
+              <div
                 key={index}
-                src={img}
-                alt="Venue"
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                className={`absolute inset-0 transition-opacity duration-1000 ${
                   index === currentImage ? "opacity-100" : "opacity-0"
                 }`}
-              />
+              >
+                <img
+                  src={img}
+                  alt="Venue"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+              </div>
             ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
 
-            <div className="absolute top-5 right-5 bg-white/20 backdrop-blur-lg border border-white/30 px-4 py-1.5 rounded-full text-xs font-semibold shadow-md">
-              ⭐ Premium Venue
+            {/* Image indicators */}
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+              {images.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    index === currentImage
+                      ? "w-8 bg-white"
+                      : "w-1 bg-white/30"
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Venue Badge */}
+            <div className="absolute top-6 right-6 px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/20 text-sm font-semibold text-white">
+              Premium Venue
             </div>
           </div>
 
-          {/* RIGHT – GLASS INFO */}
-          <div className="flex flex-col gap-6 h-[560px]">
-            {/* Venue Card */}
-            <div className="glass-card p-5">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="icon-glass">
-                  <MapPin className="w-5 h-5 text-teal-300" />
+          {/* Info Cards - Takes 2 columns */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Main Venue Card */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-white/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">
+                      SRM Institute
+                    </h3>
+                    <p className="text-sm text-white/50">
+                      Chennai, Ramapuram Campus
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="text-xl font-semibold">Texus Convention Center</h2>
-                  <p className="text-xs text-slate-400">
-                    Innovation Hub, Texus Campus
-                  </p>
+
+                {/* Details Grid */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-white/60">
+                    <Calendar className="w-5 h-5 text-white/40" />
+                    <span className="text-sm">February 14-15, 2025</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 text-white/60">
+                    <Users className="w-5 h-5 text-white/40" />
+                    <span className="text-sm">500+ Innovators Expected</span>
+                  </div>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                <InfoRow icon={Calendar} text="Feb 1–4, 2026" color="text-blue-400" />
-                <InfoRow icon={Users} text="500+ Participants" color="text-purple-400" />
-                <InfoRow icon={Mail} text="hackathon@texus.edu" color="text-amber-400" />
-                <InfoRow icon={Phone} text="+1 555 123 4567" color="text-emerald-400" />
+                {/* Map Button */}
+                <button className="mt-6 w-full flex items-center justify-center gap-3 px-6 py-4 bg-white text-black font-bold rounded-xl hover:bg-white/90 transition-all duration-300 hover:scale-105">
+                  <Navigation className="w-5 h-5" />
+                  <span>Get Directions</span>
+                </button>
               </div>
-
-              <button className="mt-4 w-full glass-button">
-                <Navigation className="w-4 h-4" />
-                View Map
-              </button>
             </div>
 
-            {/* Facilities Card */}
-            <div className="glass-card p-5 flex-1">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Award className="w-5 h-5 text-yellow-400" />
-                Facilities
-              </h3>
-
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                {facilities.map((f, i) => {
-                  const Icon = f.icon;
-                  return (
-                    <div
-                      key={i}
-                      className={`bg-gradient-to-br ${f.color} rounded-xl p-3 flex flex-col items-center gap-1 text-xs font-semibold backdrop-blur-xl border border-white/20 shadow-md hover:scale-105 transition-transform`}
-                    >
-                      <Icon className="w-5 h-5 text-white" />
-                      {f.label}
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="glass-sub text-xs">
-                ✔ Meals & refreshments<br />
-                ✔ 24/7 mentorship<br />
-                ✔ Power & workspaces<br />
-                ✔ Networking sessions
+            {/* Quick Info Card */}
+            <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 hover:border-white/20 transition-all duration-300">
+              <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <div className="w-1 h-1 bg-white rounded-full" />
+                What's Included
+              </h4>
+              
+              <div className="space-y-3 text-sm text-white/50">
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                  <span>High-speed WiFi & power outlets</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                  <span>Meals & refreshments provided</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                  <span>24/7 mentorship & support</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+                  <span>Networking opportunities</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Bottom Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+          {[
+            { label: "Capacity", value: "500+" },
+            { label: "Duration", value: "24hrs" },
+            { label: "Mentors", value: "20+" },
+            { label: "Prizes", value: "₹5L+" },
+          ].map((stat, index) => (
+            <div key={index} className="relative group">
+              <div className="absolute -inset-0.5 bg-white/5 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center hover:border-white/20 transition-all duration-300">
+                <div className="text-3xl font-black text-white mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-white/50 font-medium uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* Glass utility styles */}
-      <style jsx>{`
-        .glass-card {
-          background: rgba(255, 255, 255, 0.06);
-          backdrop-filter: blur(18px);
-          border-radius: 1.25rem;
-          border: 1px solid rgba(255, 255, 255, 0.18);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        .glass-sub {
-          background: rgba(0, 0, 0, 0.35);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          border-radius: 0.75rem;
-          padding: 0.75rem;
-        }
-
-        .icon-glass {
-          background: rgba(255, 255, 255, 0.15);
-          backdrop-filter: blur(10px);
-          border-radius: 0.75rem;
-          padding: 0.5rem;
-          border: 1px solid rgba(255, 255, 255, 0.25);
-        }
-
-        .glass-button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          background: linear-gradient(
-            to right,
-            rgba(20, 184, 166, 0.9),
-            rgba(16, 185, 129, 0.9)
-          );
-          padding: 0.6rem;
-          border-radius: 0.75rem;
-          font-size: 0.85rem;
-          font-weight: 600;
-          transition: all 0.3s ease;
-        }
-
-        .glass-button:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 0 25px rgba(20, 184, 166, 0.6);
-        }
-      `}</style>
-    </div>
-  );
-}
-
-/* Small reusable row */
-function InfoRow({
-  icon: Icon,
-  text,
-  color,
-}: {
-  icon: any;
-  text: string;
-  color: string;
-}) {
-  return (
-    <div className="flex items-center gap-2">
-      <Icon className={`w-4 h-4 ${color}`} />
-      {text}
-    </div>
+    </section>
   );
 }
