@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 
 export default function HackathonTracks() {
   const [visibleTracks, setVisibleTracks] = useState([]);
@@ -9,50 +9,56 @@ export default function HackathonTracks() {
       sdg: "SDG 3",
       title: "Good Health & Well-being",
       subtitle: "Low-Bandwidth Cancer Risk Awareness",
-      description: "Privacy-first system enabling symptom-based cancer risk awareness and screening guidance for underserved populations",
-      image: "https://www.un.org/sustainabledevelopment/wp-content/uploads/2015/12/english_SDG_17goals_poster_all_languages_with_UN_emblem_1.png",
-      color: "#4C9F38"
+      description:
+        "Privacy-first system enabling symptom-based cancer risk awareness and screening guidance for underserved populations",
+      image:
+        "https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/02/SDG-3-800x800.gif",
     },
     {
       sdg: "SDG 4",
       title: "Quality Education",
       subtitle: "Accessible Quantum Education",
-      description: "Learning framework for blind and deaf learners to access advanced quantum concepts through inclusive design",
-      image: "https://www.un.org/sustainabledevelopment/wp-content/uploads/2016/08/4.jpg",
-      color: "#C5192D"
+      description:
+        "Learning framework for blind and deaf learners to access advanced quantum concepts through inclusive design",
+      image:
+        "https://www.unoosa.org/images/ourwork/SDGs/E_SDG_goals_icons-individual-rgb-04.png",
     },
     {
       sdg: "SDG 10",
       title: "Reduced Inequalities",
       subtitle: "Disability-Inclusive Access Intelligence",
-      description: "Breaking systemic barriers for disabled individuals to access public services, infrastructure, and emergency systems",
-      image: "https://www.un.org/sustainabledevelopment/wp-content/uploads/2016/08/10.jpg",
-      color: "#DD1367"
+      description:
+        "Breaking systemic barriers for disabled individuals to access public services, infrastructure, and emergency systems",
+      image:
+        "https://www.unoosa.org/images/ourwork/SDGs/E_SDG_goals_icons-individual-rgb-10.png",
     },
     {
       sdg: "SDG 13",
       title: "Climate Action",
       subtitle: "Invasive Aquatic Plant Control",
-      description: "Non-toxic systems to control invasive species growth and monitor ecosystem recovery in freshwater bodies",
-      image: "https://www.un.org/sustainabledevelopment/wp-content/uploads/2016/08/13.jpg",
-      color: "#3F7E44"
+      description:
+        "Non-toxic systems to control invasive species growth and monitor ecosystem recovery in freshwater bodies",
+      image:
+        "https://www.nrcmec.org/NRCM-SDG/SDG_13_Climate_Action.png",
     },
     {
-      sdg: "SDG 14 + 15",
-      title: "Life Below Water & On Land",
+      sdg: "SDG 14",
+      title: "Life Below Water",
       subtitle: "Geo-Biodiversity Intelligence",
-      description: "Satellite-based platform using geospatial data to track species presence and habitat health across ecosystems",
-      image: "https://www.un.org/sustainabledevelopment/wp-content/uploads/2016/08/14.jpg",
-      color: "#0A97D9"
+      description:
+        "Satellite-based platform using geospatial data to track species presence and habitat health across ecosystems",
+      image:
+        "https://s3-eu-west-1.amazonaws.com/snv-wp/wp-content/uploads/sites/63/2018/10/02134411/E_SDG-goals_icons-individual-cmyk-14-1080x1080.jpg",
     },
     {
       sdg: "SDG 17",
       title: "Partnerships for the Goals",
       subtitle: "Collaborative SDG Action Platform",
-      description: "Cross-sector platform enabling resource sharing, partnerships, and impact tracking across SDG initiatives",
-      image: "https://www.un.org/sustainabledevelopment/wp-content/uploads/2016/08/17.jpg",
-      color: "#19486A"
-    }
+      description:
+        "Cross-sector platform enabling resource sharing, partnerships, and impact tracking across SDG initiatives",
+      image:
+        "https://s3-eu-west-1.amazonaws.com/snv-wp/wp-content/uploads/sites/63/2018/10/02133730/E_SDG-goals_icons-individual-cmyk-17-1080x1080.jpg",
+    },
   ];
 
   useEffect(() => {
@@ -61,158 +67,104 @@ export default function HackathonTracks() {
         ([entry]) => {
           if (entry.isIntersecting) {
             setTimeout(() => {
-              setVisibleTracks(prev => [...new Set([...prev, index])]);
-            }, index * 100);
+              setVisibleTracks((prev) => [...new Set([...prev, index])]);
+            }, index * 150);
           }
         },
-        { threshold: 0.2 }
+        { threshold: 0.1 }
       );
 
       if (ref) observer.observe(ref);
       return observer;
     });
 
-    return () => observers.forEach(observer => observer.disconnect());
+    return () => observers.forEach((observer) => observer.disconnect());
   }, []);
 
-  return (
+return (
     <section className="relative min-h-screen bg-black py-24 overflow-hidden" id="tracks">
-      {/* Continuing Earth texture background */}
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent via-black/50 to-black z-10" />
+      {/* Background */}
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage:
+            "url('assets/sky.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black to-black/40" />
 
-
-      <div className="absolute inset-0 pointer-events-none">
-        <div 
-          className="absolute inset-0 opacity-90"
-          style={{
-            backgroundImage: `url('assets/sky.jpg')`, //https://images.pexels.com/photos/4870656/pexels-photo-4870656.jpeg
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
-      </div>
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          
-          {/* Left: Tracks Grid (2 columns) */}
-          <div className="space-y-6">
-            <div className="mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm mb-4">
-                <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                <span className="text-xs text-white/70 font-medium">PROBLEM TRACKS</span>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex flex-col lg:flex-row-reverse gap-16 items-center min-h-[80vh]">
+          {/* Right: Grid of SDG images */}
+          <div className="w-full lg:w-1/2 grid grid-cols-3 lg:grid-cols-2 gap-6">
+            {tracks.map((track, index) => (
+              <div
+                key={index}
+                ref={(el) => (trackRefs.current[index] = el)}
+                className={`transition-all duration-700 ${
+                  visibleTracks.includes(index)
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-12 opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="relative group">
+                  <img
+                    src={track.image}
+                    alt={track.sdg}
+                    className="w-full aspect-square rounded-2xl border-2 border-white/10 object-cover transform transition-transform duration-300 group-hover:scale-105 group-hover:border-white/30"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
               </div>
-              
-              <h2 className="text-4xl lg:text-5xl font-black text-white mb-3">
-                Challenge Areas
+            ))}
+          </div>
+
+          {/* Left: Text content */}
+          <div className="w-full lg:w-1/2 space-y-12">
+            <div className="space-y-6">
+              <h2 className="text-6xl lg:text-7xl font-black text-white leading-tight">
+                Tracks
               </h2>
-              
-              <p className="text-base text-white/60">
-                Choose your track aligned with UN Sustainable Development Goals
+              <p className="text-sm text-white/70 leading-relaxed max-w-xl">
+                Choose from six SDG-aligned challenges. Build solutions that address real global problems and create lasting impact.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-8">
               {tracks.map((track, index) => (
                 <div
                   key={index}
-                  ref={el => trackRefs.current[index] = el}
-                  className={`group relative p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all duration-500 ${
-                    visibleTracks.includes(index) 
-                      ? 'opacity-100 translate-x-0' 
-                      : 'opacity-0 -translate-x-20'
+                  className={`transition-all duration-700 ${
+                    visibleTracks.includes(index)
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-12 opacity-0"
                   }`}
-                  style={{
-                    transitionDelay: `${index * 100}ms`
-                  }}
+                  style={{ transitionDelay: `${index * 150}ms` }}
                 >
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="relative space-y-3">
-                    {/* SDG Icon Image */}
-                    <div className="w-16 h-16 rounded-lg overflow-hidden transform group-hover:scale-110 transition-transform duration-300">
-                      <img 
-                        src={track.image} 
-                        alt={track.sdg}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-
-                    {/* SDG Label */}
-                    <div className="inline-block px-2 py-1 text-[10px] font-bold rounded bg-white/10 text-white/80 border border-white/10">
+                  <div className="group cursor-pointer">
+                    <div className="inline-block px-3 py-1 text-xs font-bold rounded-full bg-white/5 border border-white/20 text-white/80 mb-2 group-hover:bg-white/10 transition-colors">
                       {track.sdg}
                     </div>
-
-                    {/* Title */}
-                    <h3 className="text-sm font-bold text-white leading-tight">
+                    <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-white/90 transition-colors">
                       {track.title}
                     </h3>
+                    <h4 className="text-lg text-white/60 font-medium mb-2">
+                      {track.subtitle}
+                    </h4>
+                    <p className="text-white/50 leading-relaxed text-sm">
+                      {track.description}
+                    </p>
                   </div>
-
-                  {/* Corner accent */}
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/10 rounded-br-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {index < tracks.length - 1 && (
+                    <div className="mt-6 h-px bg-gradient-to-r from-white/10 via-white/5 to-transparent" />
+                  )}
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Right: Detailed Information */}
-          <div className="lg:pt-32 space-y-8">
-            <div className="space-y-6 p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold text-white">How It Works</h3>
-              
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-sm">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Choose Your Track</h4>
-                    <p className="text-sm text-white/60">Select one of the 6 SDG-aligned problem statements</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-sm">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Build Your Solution</h4>
-                    <p className="text-sm text-white/60">Develop prototypes, simulations, or working systems over 24 hours</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-sm">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Make Real Impact</h4>
-                    <p className="text-sm text-white/60">Present solutions that address critical sustainability challenges</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-xl border border-white/20 bg-white/5 backdrop-blur-sm">
-              <p className="text-sm text-white/70 mb-4">
-                <span className="font-semibold text-white">Own Ideas Welcome:</span> Students can also submit their own SDG-aligned solutions during Phase 1
-              </p>
-              
-              <a
-                href="/register"
-                className="inline-flex items-center gap-3 px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-white/90 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.3)] text-sm"
-              >
-                <span>View All Problem Statements</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
