@@ -1,3 +1,5 @@
+import { Download, ArrowRight } from "lucide-react";
+
 export default function HackathonTimeline() {
   const phases = [
     {
@@ -65,20 +67,16 @@ export default function HackathonTimeline() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-black/10 py-32 overflow-hidden" id="roadmap">
+    <section className="relative min-h-screen py-32 overflow-hidden -mt-1" id="roadmap">
       {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-70"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1514454529242-9e4677563e7b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c2t5JTIwd2FsbHBhcGVyfGVufDB8fDB8fHww')",
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/0" />
-      </div>
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('assets/land.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
@@ -185,6 +183,30 @@ export default function HackathonTimeline() {
             <span className="text-xs text-white/60 uppercase">Finale</span>
             <div className="w-4 h-4 bg-red-500 rounded-full" />
           </div>
+        </div>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-24">
+          <a 
+            href="/register"
+            className="group relative px-8 py-4 bg-white text-black font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] inline-flex items-center justify-center"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              Register Now
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
+          </a>
+
+          <a
+            href="assets/zeph_details.pdf"
+            download
+            className="group px-8 py-4 bg-black/60 backdrop-blur-sm text-white font-bold rounded-full border-2 border-white/20 transition-all duration-300 hover:bg-black/80 hover:border-white/40 hover:scale-105 inline-flex items-center justify-center"
+          >
+            <span className="flex items-center justify-center gap-2">
+              <Download className="w-5 h-5" />
+              Download Details
+            </span>
+          </a>
         </div>
       </div>
     </section>

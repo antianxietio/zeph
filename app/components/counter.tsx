@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import water from '../assets/water.jpg'
 
 const Counter = () => {
   const [time, setTime] = useState({
@@ -43,7 +42,7 @@ const Counter = () => {
 
       {/* BACKGROUND IMAGE */}
       <img
-  src={water.src ?? water}
+  src={'../assets/land_sea.png'}
   alt="Underwater World"
   className="
     absolute inset-0 w-full h-full object-cover
@@ -54,13 +53,12 @@ const Counter = () => {
 
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/20 via-black/40 to-black/70" />
 
       {/* CONTENT */}
       <div className="relative z-10 flex flex-col items-center justify-end h-full pb-28 text-center">
 
         <h1 className="text-white text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-          ZEPH Hackathon 2025
+          ZEPH '26 Hackathon
         </h1>
 
         <p className="text-cyan-100/90 tracking-widest text-sm mb-10">

@@ -6,13 +6,12 @@ export default function HackathonHero() {
       {/* Earth's Crust Background - Bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-[60vh] pointer-events-none">
         {/* Gradient overlay for smooth transition */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-black/50 to-black z-10" />
         
         {/* Earth texture/crust image */}
         <div 
           className="absolute inset-0 opacity-80"
           style={{
-            backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/071/375/043/small/nature-background-nature-wallpaper-view-of-earth-s-atmosphere-and-oceans-from-orbit-with-starfield-and-galaxy-free-photo.jpg')`,
+            backgroundImage: `url('assets/earth.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'bottom',
           }}

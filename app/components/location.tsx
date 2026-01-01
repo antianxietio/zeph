@@ -43,7 +43,7 @@ export default function LocationDetails() {
           </div>
           
           <h2 className="text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight">
-            Location & Event
+            Location & Event Details
           </h2>
           
           <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
@@ -68,7 +68,6 @@ export default function LocationDetails() {
                   alt="Venue"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               </div>
             ))}
 
@@ -163,8 +162,9 @@ export default function LocationDetails() {
           </div>
         </div>
 
-        {/* Bottom Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+        {/* Bottom Stats
+        
+         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
             { label: "Capacity", value: "500+" },
             { label: "Duration", value: "24hrs" },
@@ -184,6 +184,8 @@ export default function LocationDetails() {
             </div>
           ))}
         </div>
+        */}
+       
       </div>
     </section>
   );

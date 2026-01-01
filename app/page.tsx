@@ -2,20 +2,29 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+
 import Navbar from "./components/navbar";
 import HackathonHero from "./components/Hero";
 import HackathonTracks from "./components/Tracks";
-import Counter from "./components/counter";
 import Timeline from "./components/Timeline";
 import HackathonCountdown from "./components/counter";
-import PartnerInstitutions from "./components/partner";
 import LocationDetails from "./components/location";
 import Footer from "./components/footer";
 
-// IMPORTANT: client-only Galaxy
+// Client-only galaxy (future use)
 const Galaxy = dynamic(() => import("./components/galaxy"), {
   ssr: false,
 });
+
+// 🌗 Environment transition component
+function EnvironmentTransition({ image }: { image: string }) {
+  return (
+    <div
+      className="relative -mt-[25vh] h-[50vh] w-full bg-cover bg-top z-30 pointer-events-none"
+      style={{ backgroundImage: `url(${image})` }}
+    />
+  );
+}
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -32,10 +41,11 @@ export default function Home() {
     window.addEventListener("scroll", onScroll);
     window.addEventListener("resize", onResize);
 
-    // Load custom font
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&display=swap';
-    link.rel = 'stylesheet';
+    // Fonts
+    const link = document.createElement("link");
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&display=swap";
+    link.rel = "stylesheet";
     document.head.appendChild(link);
 
     return () => {
@@ -44,22 +54,24 @@ export default function Home() {
     };
   }, []);
 
+  // 🌕 Moon parallax
   const moonTranslateY =
     windowHeight > 0
       ? Math.max(-50, 50 - (scrollY / windowHeight) * 100)
       : 50;
 
-  // Parallax effect for title
   const titleOpacity = Math.max(0, 1 - scrollY / (windowHeight * 0.5));
   const titleTranslateY = scrollY * 0.3;
 
   return (
-    <main className="w-full bg-black text-white">
-      <section className="relative h-screen overflow-hidden">
-        {/* 🌌 Galaxy background */}
-        
+    <main className="w-full bg-black text-white overflow-x-hidden">
 
-        {/* 🌕 Moon */}
+      {/* ===================== SPACE ===================== */}
+      <section className="relative h-screen overflow-hidden bg-black">
+        {/* Galaxy reserved */}
+        {/* <Galaxy /> */}
+
+        {/* Moon */}
         <div
           className="absolute inset-0 z-10 bg-cover bg-bottom transition-transform duration-100 ease-linear"
           style={{
@@ -68,10 +80,10 @@ export default function Home() {
           }}
         />
 
-        {/* Premium Navbar */}
-    <Navbar/>
-        {/* Hero Title with animations */}
-        <div 
+        <Navbar />
+
+        {/* Hero */}
+        <div
           className="relative z-20 flex h-full flex-col items-center justify-center -mt-32"
           style={{
             opacity: titleOpacity,
@@ -79,45 +91,29 @@ export default function Home() {
           }}
         >
           <div className="relative">
-            {/* Background glow layers */}
-            <h1 
+            <h1
               className="absolute inset-0 text-[12rem] font-black blur-3xl opacity-40"
-              style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '-0.02em' }}
-              aria-hidden="true"
+              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              aria-hidden
             >
               ZEPH '26
             </h1>
-            <h1 
-              className="absolute inset-0 text-[12rem] font-black blur-xl opacity-60"
-              style={{ fontFamily: "'Teko', sans-serif", letterSpacing: '-0.02em' }}
-              aria-hidden="true"
-            >
-              ZEPH '26
-            </h1>
-            
-            {/* Main text */}
-            <h1 
-              className={`relative text-[12rem] font-black bg-linear-to-b from-white via-white to-white/90 bg-clip-text text-transparent transition-opacity duration-1000 ${
-                mounted ? 'opacity-100' : 'opacity-0'
-              }`}
+
+            <h1
+              className="relative text-[12rem] font-black bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/80"
               style={{
                 fontFamily: "'Bebas Neue', sans-serif",
-                letterSpacing: '-0.02em',
-                filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
+                filter:
+                  "drop-shadow(0 4px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(255,255,255,0.3))",
               }}
             >
               ZEPH '26
             </h1>
           </div>
-          
 
           {/* Scroll indicator */}
-          <div 
-            className={`absolute bottom-12 flex flex-col items-center gap-3 transition-all duration-1000 delay-500 ${
-              mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            <span className="text-xs font-light tracking-widest text-white/40">
+          <div className="absolute bottom-12 flex flex-col items-center gap-3">
+            <span className="text-xs tracking-widest text-white/40">
               SCROLL
             </span>
             <div className="h-12 w-6 rounded-full border border-white/20 p-1">
@@ -127,26 +123,22 @@ export default function Home() {
         </div>
       </section>
 
-      <HackathonHero/>
+      {/* ===== SPACE → SKY TRANSITION ===== */}
+      <EnvironmentTransition image="/assets/space-sky.png" />
 
-      
+      {/* ================= SKY / LAND ================= */}
+      <section className="relative bg-[#0a1a2f] overflow-hidden">
+        <HackathonHero />
+        <HackathonTracks />
+        <Timeline />
+        <HackathonCountdown />
+      </section>
+      {/* ================= SEA ================= */}
+      <section className="relative bg-[#020d14] overflow-hidden">
+        <LocationDetails />
+        <Footer />
+      </section>
 
-      <HackathonTracks/>
-
-      <Timeline/>
-       
-
-      <HackathonCountdown/>
-      
-      <LocationDetails/>
-
-     
-
-
-      <Footer/>
-
-      
-    
     </main>
   );
 }

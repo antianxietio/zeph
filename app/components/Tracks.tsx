@@ -82,18 +82,17 @@ export default function HackathonTracks() {
   }, []);
 
 return (
-    <section className="relative min-h-screen bg-black py-24 overflow-hidden" id="tracks">
+    <section className="relative min-h-screen py-24 overflow-hidden" id="tracks">
       {/* Background */}
       <div
         className="absolute inset-0 opacity-80"
         style={{
           backgroundImage:
-            "url('assets/sky.jpg')",
+            "url('assets/space_sky.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black to-black/40" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row-reverse gap-16 items-center min-h-[80vh]">
