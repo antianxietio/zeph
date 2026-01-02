@@ -20,13 +20,23 @@ export default function LocationDetails() {
 
   return (
     <section className="relative min-h-screen bg-transparent py-32 overflow-hidden" id="venue">
-      {/* Background */}
+      {/* Location Background */}
 <div className="absolute inset-0 pointer-events-none">
   <div
     className="absolute inset-0"
     style={{
-      backgroundImage:
-        "url('assets/sea.png')",
+      backgroundImage: `
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,1) 0%,
+          rgba(0,0,0,0.6) 15%,
+          rgba(0,0,0,0) 30%,
+          rgba(0,0,0,0) 70%,
+          rgba(0,0,0,0.6) 85%,
+          rgba(0,0,0,1) 100%
+        ),
+        url('assets/sea.png')
+      `,
       backgroundSize: "cover",
       backgroundPosition: "center",
     }}

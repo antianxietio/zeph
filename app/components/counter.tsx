@@ -40,16 +40,35 @@ const Counter = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
 
-      {/* BACKGROUND IMAGE */}
-      <img
-  src={'../assets/water.jpg'}
-  alt="Underwater World"
-  className="
-    absolute inset-0 w-full h-full object-cover
-    contrast-110 saturate-110
-    will-change-transform
-  "
-/>
+      {/* Counter Background */}
+<div className="absolute inset-0">
+  <div
+    className="absolute inset-0 z-10"
+    style={{
+      backgroundImage: `
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,1) 0%,
+          rgba(0,0,0,0.6) 15%,
+          rgba(0,0,0,0) 30%,
+          rgba(0,0,0,0) 70%,
+          rgba(0,0,0,0.6) 85%,
+          rgba(0,0,0,1) 100%
+        )
+      `,
+    }}
+  />
+
+  <img
+    src="../assets/Gemini_Generated_Image_atawfxatawfxataw.png"
+    alt="Underwater World"
+    className="
+      absolute inset-0 w-full h-full object-cover
+      contrast-110 saturate-110
+      will-change-transform
+    "
+  />
+</div>
 
 
       {/* OVERLAY */}

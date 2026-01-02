@@ -68,15 +68,26 @@ export default function HackathonTimeline() {
 
   return (
     <section className="relative min-h-screen py-32 overflow-hidden -mt-1" id="roadmap">
-      {/* Background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "url('assets/land.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
-      />
+        {/* Timeline Background */}
+<div
+  className="absolute inset-0 pointer-events-none"
+  style={{
+    backgroundImage: `
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.6) 15%,
+        rgba(0,0,0,0) 30%,
+        rgba(0,0,0,0) 75%,
+        rgba(0,0,0,0.4) 90%,
+        rgba(0,0,0,0.85) 100%
+      ),
+      url('assets/space_sequence_3.jpg')
+    `,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+/>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}

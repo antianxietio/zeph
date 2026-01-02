@@ -8,14 +8,24 @@ export default function HackathonHero() {
         {/* Gradient overlay for smooth transition */}
         
         {/* Earth texture/crust image */}
-        <div 
-          className="absolute inset-0 opacity-80"
-          style={{
-            backgroundImage: `url('assets/earth.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'bottom',
-          }}
-        />
+        {/* Previous Page Background – fade OUT */}
+<div
+  className="absolute inset-0"
+  style={{
+    backgroundImage: `
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0) 65%,
+        rgba(0,0,0,0.6) 85%,
+        rgba(0,0,0,1) 100%
+      ),
+      url('assets/space_sequence_1.jpg')
+    `,
+    backgroundSize: "cover",
+    backgroundPosition: "bottom",
+  }}
+/>
         
         {/* Atmospheric glow effect */}
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black via-transparent to-transparent z-20" />

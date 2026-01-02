@@ -67,7 +67,9 @@ export default function HackathonTracks() {
         ([entry]) => {
           if (entry.isIntersecting) {
             setTimeout(() => {
-              setVisibleTracks((prev) => [...new Set([...prev, index])]);
+              setVisibleTracks((prev) =>
+                prev.includes(index) ? prev : [...prev, index]
+              );
             }, index * 150);
           }
         },
@@ -81,18 +83,28 @@ export default function HackathonTracks() {
     return () => observers.forEach((observer) => observer.disconnect());
   }, []);
 
-return (
+  return (
     <section className="relative min-h-screen py-24 overflow-hidden" id="tracks">
-      {/* Background */}
-      <div
-        className="absolute inset-0 opacity-80"
-        style={{
-          backgroundImage:
-            "url('assets/space_sky.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "top",
-        }}
-      />
+      {/* Tracks Background */}
+<div
+  className="absolute inset-0"
+  style={{
+    backgroundImage: `
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.6) 15%,
+        rgba(0,0,0,0) 30%,
+        rgba(0,0,0,0) 70%,
+        rgba(0,0,0,0.6) 85%,
+        rgba(0,0,0,1) 100%
+      ),
+      url('assets/space_sequence_2.jpg')
+    `,
+    backgroundSize: "cover",
+    backgroundPosition: "73% top",
+  }}
+/>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row-reverse gap-16 items-center min-h-[80vh]">
@@ -101,7 +113,9 @@ return (
             {tracks.map((track, index) => (
               <div
                 key={index}
-                ref={(el) => (trackRefs.current[index] = el)}
+                ref={(el) => {
+                  trackRefs.current[index] = el;
+                }}
                 className={`transition-all duration-700 ${
                   visibleTracks.includes(index)
                     ? "translate-y-0 opacity-100"
@@ -128,7 +142,8 @@ return (
                 Tracks
               </h2>
               <p className="text-sm text-white/70 leading-relaxed max-w-xl">
-                Choose from six SDG-aligned challenges. Build solutions that address real global problems and create lasting impact.
+                Choose from six SDG-aligned challenges. Build solutions that
+                address real global problems and create lasting impact.
               </p>
             </div>
 
