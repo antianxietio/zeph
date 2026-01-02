@@ -44,14 +44,14 @@ export default function Footer() {
               style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '-0.02em' }}
               aria-hidden="true"
             >
-              ZEPH '26
+              ZYPH  '26
             </h1>
             <h1 
               className="absolute inset-0 text-[6rem] font-black blur-xl opacity-60"
               style={{ fontFamily: "'Teko', sans-serif", letterSpacing: '-0.02em' }}
               aria-hidden="true"
             >
-              ZEPH '26
+              ZYPH  '26
             </h1>
             
             {/* Main text */}
@@ -63,7 +63,7 @@ export default function Footer() {
                 filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))',
               }}
             >
-              ZEPH '26
+              ZYPH  '26
             </h1>
           </div>
               <p className="text-base text-white/50 leading-relaxed">
@@ -127,11 +127,11 @@ export default function Footer() {
             <div className="space-y-2">
               <p className="text-sm text-white/50">Get in touch</p>
               <a
-                href="mailto:hello@zeph.srm.edu"
+                href="mailto:hello@ZYPH .srm.edu"
                 className="text-base text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2"
               >
                 <Mail className="w-4 h-4" />
-                hello@zeph.srm.edu
+                hello@ZYPH .srm.edu
               </a>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-sm text-white/50">
-            © 2025 ZEPH Hackathon. All rights reserved.
+            © 2025 ZYPH  Hackathon. All rights reserved.
           </div>
 
           <div className="flex flex-wrap justify-center gap-8">

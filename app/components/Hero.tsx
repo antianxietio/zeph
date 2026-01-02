@@ -37,7 +37,7 @@ export default function HackathonHero() {
             </div>
 
             <h1 className="text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter">
-              ZEPH
+              ZYPH 
             </h1>
 
             <div className="w-20 h-0.5 bg-white/30" />

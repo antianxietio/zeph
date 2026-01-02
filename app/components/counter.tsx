@@ -58,7 +58,7 @@ const Counter = () => {
       <div className="relative z-10 flex flex-col items-center justify-end h-full pb-28 text-center">
 
         <h1 className="text-white text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-          ZEPH '26 Hackathon
+          ZYPH  '26 Hackathon
         </h1>
 
         <p className="text-cyan-100/90 tracking-widest text-sm mb-10">

@@ -96,7 +96,7 @@ export default function Home() {
               style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               aria-hidden
             >
-              ZEPH '26
+              ZYPH  '26
             </h1>
 
             <h1
@@ -107,7 +107,7 @@ export default function Home() {
                   "drop-shadow(0 4px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(255,255,255,0.3))",
               }}
             >
-              ZEPH '26
+              ZYPH  '26
             </h1>
           </div>
 

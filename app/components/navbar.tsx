@@ -55,7 +55,7 @@ export default function Navbar() {
               <div className="relative flex w-20 h-20 items-center justify-center rounded-full bg-gradient-to-br from-gray-900 to-black ring-1 ring-white/20">
                 <img
                   src="assets/logo.jpeg"
-                  alt="Zeph Logo"
+                  alt="ZYPH  Logo"
                   className="w-full h-full rounded-full p-1 bg-gradient-to-br from-black to-gray-900"
                 />
               </div>

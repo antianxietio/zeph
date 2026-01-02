@@ -198,7 +198,7 @@ export default function HackathonTimeline() {
           </a>
 
           <a
-            href="assets/zeph_details.pdf"
+            href="assets/ZYPH _details.pdf"
             download
             className="group px-8 py-4 bg-black/60 backdrop-blur-sm text-white font-bold rounded-full border-2 border-white/20 transition-all duration-300 hover:bg-black/80 hover:border-white/40 hover:scale-105 inline-flex items-center justify-center"
           >
